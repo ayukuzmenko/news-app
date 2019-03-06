@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsApiService } from './services/news-api.service';
+import { CustomDatePipe } from './pipes/custom-date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    CustomDatePipe
   ],
   imports: [
     BrowserModule,
