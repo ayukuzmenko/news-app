@@ -10,6 +10,8 @@ export class HomeComponent implements OnInit {
   public newsList;
   public currentCategory: string = 'technology';
   public currentCountry: string = 'ru';
+  public currentSource: string = ``;
+
   categoryList = [
   `business`, 
   `entertainment`, 
@@ -27,6 +29,21 @@ export class HomeComponent implements OnInit {
     `ch`
   ]
 
+  sourceList = [
+    `abc-news`,
+    `bbc-sport`,
+    `argaam`,
+    `axios`,
+    `cbc-news`,
+    `cbs-news`,
+    `financial-post`,
+    `espn`,
+    `usa-today`,
+    `the-economist`,
+    `rt`,
+    `reuters`
+  ]
+
   constructor(
     private news: NewsApiService
   ) { }
@@ -38,10 +55,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onChange() {
+  onChangeCountryOrCategory() {
     this.news.getNewsByCountryAndCategory(this.currentCountry, this.currentCategory).subscribe(news => {
       this.newsList = news['articles'];
     });
   }
 
+  onChangeSource(source) {
+    this.news.getNewsBySources(this.currentSource).subscribe(news => {
+      this.newsList = news['articles'];
+      this.currentCountry = ``;
+      this.currentCategory = ``;
+    });
+  }
 }
