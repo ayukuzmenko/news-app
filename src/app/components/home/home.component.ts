@@ -9,40 +9,28 @@ import { NewsApiService } from 'src/app/services/news-api.service';
 export class HomeComponent implements OnInit {
   public newsList;
   public currentCategory: string = 'technology';
-  public currentCountry: string = 'ru';
+  public currentCountry: string = 'us';
   public currentSource: string = ``;
 
   categoryList = [
-  `business`, 
-  `entertainment`, 
-  `health`, 
-  `science`, 
-  `sports`, 
-  `technology`
+    `business`, 
+    `entertainment`, 
+    `health`, 
+    `science`, 
+    `sports`, 
+    `technology`
   ];
 
   countryList = [
+    `us`,
     `ua`,
     `ru`,
-    `us`,
     `ng`,
-    `ch`
+    `ch`,
+    `gb`
   ]
 
-  sourceList = [
-    `abc-news`,
-    `bbc-sport`,
-    `argaam`,
-    `axios`,
-    `cbc-news`,
-    `cbs-news`,
-    `financial-post`,
-    `espn`,
-    `usa-today`,
-    `the-economist`,
-    `rt`,
-    `reuters`
-  ]
+  sourceList = []
 
   constructor(
     private news: NewsApiService
@@ -53,19 +41,35 @@ export class HomeComponent implements OnInit {
     this.news.getNewsByCountryAndCategory(this.currentCountry, this.currentCategory).subscribe(news => {
       this.newsList = news['articles'];
     });
+
+    // get all sources
+    this.news.getSourcesByCountry(this.currentCountry, this.currentCategory).subscribe(data => {
+      if (data[`sources`].length) {
+        this.sourceList = data[`sources`];
+        this.currentSource = this.sourceList[0];
+      }
+    });
   }
 
   onChangeCountryOrCategory() {
     this.news.getNewsByCountryAndCategory(this.currentCountry, this.currentCategory).subscribe(news => {
       this.newsList = news['articles'];
     });
+
+    this.news.getSourcesByCountry(this.currentCountry, this.currentCategory).subscribe(data => {
+      if (data[`sources`].length) {
+        this.sourceList = data[`sources`];
+        this.currentSource = this.sourceList[0];
+      } else {
+        this.sourceList = [];
+        this.currentSource = ``;
+      }
+    });
   }
 
   onChangeSource(source) {
     this.news.getNewsBySources(this.currentSource).subscribe(news => {
       this.newsList = news['articles'];
-      this.currentCountry = ``;
-      this.currentCategory = ``;
     });
   }
 }

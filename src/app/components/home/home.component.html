@@ -1,7 +1,7 @@
 <div class="container">
   <div class="filters mt-5">
     <div class="row">
-      <div class="form-group col-6">
+      <div class="form-group col-4">
         <select 
           name="currentCategory" 
           class="form-control"
@@ -11,7 +11,7 @@
           <option *ngFor="let category of categoryList" [ngValue]="category">{{ category }}</option>
         </select>
       </div>
-      <div class="form-group col-6">
+      <div class="form-group col-4">
         <select 
           name="currentCountry" 
           class="form-control"
@@ -21,14 +21,14 @@
           <option *ngFor="let country of countryList" [ngValue]="country">{{ country }}</option>
         </select>
       </div>
-      <div class="form-group col-6">
+      <div class="form-group col-4">
           <select 
             name="currentSource" 
             class="form-control"
             [(ngModel)]="currentSource"
             (change)="onChangeSource()"
           >
-            <option *ngFor="let source of sourceList" [ngValue]="source">{{ source }}</option>
+            <option *ngFor="let source of sourceList" [ngValue]="source.id">{{ source.name }}</option>
           </select>
         </div>
     </div>
