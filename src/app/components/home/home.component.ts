@@ -35,9 +35,10 @@ export class HomeComponent implements OnInit {
     `de`,
     `jp`,
     `ar`
-  ]
+  ];
 
-  sourceList = []
+  sourceList = [];
+  color = `blue`;
 
   constructor(
     private news: NewsApiService

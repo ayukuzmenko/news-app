@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsApiService } from './services/news-api.service';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
+import { CustomColorDirective } from './directives/custom-color.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CustomDatePipe
+    CustomDatePipe,
+    CustomColorDirective
   ],
   imports: [
     BrowserModule,
