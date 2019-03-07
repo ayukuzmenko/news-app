@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   public currentSource: string = ``;
 
   categoryList = [
+    `general`,
     `business`, 
     `entertainment`, 
     `health`, 
@@ -27,7 +28,13 @@ export class HomeComponent implements OnInit {
     `ru`,
     `ng`,
     `ch`,
-    `gb`
+    `gb`,
+    `ca`,
+    `fr`,
+    `it`,
+    `de`,
+    `jp`,
+    `ar`
   ]
 
   sourceList = []
