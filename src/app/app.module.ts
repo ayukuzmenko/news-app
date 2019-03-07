@@ -9,13 +9,17 @@ import { HomeComponent } from './components/home/home.component';
 import { NewsApiService } from './services/news-api.service';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { CustomColorDirective } from './directives/custom-color.directive';
+import { ShowDescriptionDirective } from './directives/show-description.directive';
+import { CustomIfDirective } from './directives/custom-if.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CustomDatePipe,
-    CustomColorDirective
+    CustomColorDirective,
+    ShowDescriptionDirective,
+    CustomIfDirective
   ],
   imports: [
     BrowserModule,

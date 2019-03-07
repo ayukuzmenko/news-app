@@ -7,7 +7,7 @@ import { NewsApiService } from 'src/app/services/news-api.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public newsList;
+  public newsList = [];
   public currentCategory: string = 'technology';
   public currentCountry: string = 'us';
   public currentSource: string = ``;
